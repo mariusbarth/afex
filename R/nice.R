@@ -31,7 +31,7 @@
 #'   \link[stats]{p.adjust} and details). The default \code{NULL} corresponds to
 #'   no adjustment.
 #' @param sig_symbols Character. What should be the symbols designating
-#'   significance? When entering an vector with \code{length(sig.symbol) < 4}
+#'   significance? When entering a vector with \code{length(sig.symbol) < 4}
 #'   only those elements of the default (\code{c(" +", " *", " **", " ***")})
 #'   will be replaced. \code{sig_symbols = ""} will display the stars but not
 #'   the \code{+}, \code{sig_symbols = rep("", 4)} will display no symbols. The
@@ -212,9 +212,9 @@ nice.anova <- function(object,
                                       stringsAsFactors = FALSE))  
   df.out <- cbind(df.out, data.frame(F = make.fs(anova_table, symbols.use), 
                                      stringsAsFactors = FALSE))
-  if (!is.null(anova_table$ges)) df.out$ges <- round_ps(anova_table$ges)
-  if (!is.null(anova_table$pes)) df.out$pes <- round_ps(anova_table$pes)
-  df.out$p.value  <-  round_ps(anova_table[,"Pr(>F)"])
+  if (!is.null(anova_table$ges)) df.out$ges <- print_ps(anova_table$ges)
+  if (!is.null(anova_table$pes)) df.out$pes <- print_ps(anova_table$pes)
+  df.out$p.value  <-  print_ps(anova_table[,"Pr(>F)"])
   if (!intercept) if (df.out[1,1] == "(Intercept)")  {
     df.out <- df.out[-1,, drop = FALSE]
   }
